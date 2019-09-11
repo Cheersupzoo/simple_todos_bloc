@@ -21,14 +21,6 @@ class Uuid {
         '${_bitsDigits(12, 3)}${_bitsDigits(16, 4)}';
   }
 
-  String generateV1() {
-    // Generate xxx-xxxxxxx / 3-7.
-    final int special = 8 + _random.nextInt(4);
-
-    return 
-        '${_bitsDigits(16, 4)}-'
-        '${_bitsDigits(12, 3)}${_bitsDigits(6, 2)}';
-  }
 
   String _bitsDigits(int bitCount, int digitCount) =>
       _printDigits(_generateBits(bitCount), digitCount);
