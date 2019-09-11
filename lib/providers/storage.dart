@@ -15,7 +15,7 @@ class FileStorage {
   }
 
 
-  Future<List<TodoModel>> loadCourses() async {
+  Future<List<TodoModel>> loadTodos() async {
     try {
       final file = await _getLocalFile();
       final string = await file.readAsString();
@@ -30,7 +30,7 @@ class FileStorage {
     }
   }
 
-  Future<File> saveCourses(List<TodoModel> todos) async {
+  Future<File> saveTodos(List<TodoModel> todos) async {
     final file = await _getLocalFile();
     TodoList temp = TodoList(todos);
     return file.writeAsString(jsonEncode(temp));

@@ -27,7 +27,7 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
 
   Stream<TodosState> _mapLoadTodosToState() async* {
     try {
-      final todos = await FileStorage().loadCourses();
+      final todos = await FileStorage().loadTodos();
       yield TodosLoaded(todos);
     } catch (_) {
       yield TodosNotLoaded();
@@ -68,6 +68,6 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
   }
 
   Future _saveCourses(List<TodoModel> todos) {
-    return FileStorage().saveCourses(todos);
+    return FileStorage().saveTodos(todos);
   }
 }
