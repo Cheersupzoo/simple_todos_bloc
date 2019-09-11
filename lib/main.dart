@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:simple_todos_bloc/screens/screens.dart';
+import 'package:simple_todos_bloc/screens/screens.dart';     // --> นำหน้า TodosScreen มาใช้งาน
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simple_todos_bloc/blocs/blocs.dart';
 
 void main() {
-  runApp(BlocProvider(
+  runApp(BlocProvider(                              // --> ครอบด้วย BlocProvider จะได้เรียกใช้งาน bloc ได้
     builder: (context) {
-      return TodosBloc()..dispatch(LoadTodos());
+      return TodosBloc()..dispatch(LoadTodos());    // --> ทุกครั้งที่เปิดแอป เราก็จะเรียก event LoadTodos
     },
     child: MyApp(),
   ));
@@ -20,18 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TodoApp(),
+      home: TodosScreen(),                         // --> โชว์หน้า TodosScreen 
     );
   }
 }
-
-class TodoApp extends StatelessWidget {
-  const TodoApp({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return new TodosScreen();
-  }
-}
-
-
