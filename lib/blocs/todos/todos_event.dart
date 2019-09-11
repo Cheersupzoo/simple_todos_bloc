@@ -10,7 +10,7 @@ abstract class TodosEvent extends Equatable {
 class LoadTodos extends TodosEvent {
   @override
   String toString() {
-    return 'LoadCourses';
+    return 'LoadTodos';
   }
 }
 

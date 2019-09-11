@@ -39,7 +39,7 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
       final List<TodoModel> updatedTodos =
           List.from((currentState as TodosLoaded).todos);
       updatedTodos.add(event.todo);
-      _saveCourses(updatedTodos);
+      _saveTodos(updatedTodos);
       yield TodosLoaded(updatedTodos);
     }
   }
@@ -47,12 +47,12 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
   Stream<TodosState> _mapUpdateTodosToState(UpdateTodos event) async* {
     if (currentState is TodosLoaded) {
 
-      final List<TodoModel> updatedCourses =
-          (currentState as TodosLoaded).todos.map((course) {
-        return course.id == event.updateTodo.id ? event.updateTodo : course;
+      final List<TodoModel> updatedTodos =
+          (currentState as TodosLoaded).todos.map((todo) {
+        return todo.id == event.updateTodo.id ? event.updateTodo : todo;
       }).toList();
-      yield TodosLoaded(updatedCourses);
-      _saveCourses(updatedCourses);
+      yield TodosLoaded(updatedTodos);
+      _saveTodos(updatedTodos);
     }
   }
 
@@ -60,14 +60,14 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
     if (currentState is TodosLoaded) {
       final List<TodoModel> updatedTodos = (currentState as TodosLoaded)
           .todos
-          .where((course) => course.id != event.deleteTodo.id)
+          .where((todo) => todo.id != event.deleteTodo.id)
           .toList();
       yield TodosLoaded(updatedTodos);
-      _saveCourses(updatedTodos);
+      _saveTodos(updatedTodos);
     }
   }
 
-  Future _saveCourses(List<TodoModel> todos) {
+  Future _saveTodos(List<TodoModel> todos) {
     return FileStorage().saveTodos(todos);
   }
 }
