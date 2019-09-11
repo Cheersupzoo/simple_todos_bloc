@@ -45,11 +45,3 @@ Future<Directory> getDirectory() async {
   }
   return path;
 }
-
-Future<Directory> getDirectoryGolbal() async {
-  Directory path = await getExternalStorageDirectory();
-  if (path == null) {
-    return null;
-  }
-  return path;
-}
