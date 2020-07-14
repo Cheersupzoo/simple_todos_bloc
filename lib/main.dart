@@ -5,8 +5,8 @@ import 'package:simple_todos_bloc/blocs/blocs.dart';
 
 void main() {
   runApp(BlocProvider(                              // --> ครอบด้วย BlocProvider จะได้เรียกใช้งาน bloc ได้
-    builder: (context) {
-      return TodosBloc()..dispatch(LoadTodos());    // --> ทุกครั้งที่เปิดแอป เราก็จะเรียก event LoadTodos
+    create: (context) {
+      return TodosBloc()..add(LoadTodos());    // --> ทุกครั้งที่เปิดแอป เราก็จะเรียก event LoadTodos
     },
     child: MyApp(),
   ));

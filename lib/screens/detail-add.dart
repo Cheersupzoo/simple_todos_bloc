@@ -78,7 +78,7 @@ class _DetailAddScreenState extends State<DetailAddScreen> {
                     },
                   ),
                   isEditing == false ? IconButton(icon: Icon(Icons.delete),onPressed: () {    // --> โชว์ปุ่มลบเมื่อ อยู่ในสถานะไม่ได้แก้ไข
-                    todosBloc.dispatch(DeleteTodos(todo));                                    // --> เรียก event DeleteTodos
+                    todosBloc.add(DeleteTodos(todo));                                    // --> เรียก event DeleteTodos
                     Navigator.pop(context);                                                   // --> เด้งหน้านี้ออกไป
                   },) : SizedBox()
                 ],
@@ -109,14 +109,14 @@ class _DetailAddScreenState extends State<DetailAddScreen> {
                               detail: _detail,
                               complete: false,
                             );
-                            todosBloc.dispatch(AddTodos(toSave));
+                            todosBloc.add(AddTodos(toSave));
                             Navigator.pop(context);                                        // --> เมื่อสร้างเสร็จเราจะเด้งหน้านี้ออกด้วย ** ไม่จำเป็นต้องเด้งออก แล้วแต่เราอยากดีไซน์เลย ถ้าไม่เด้งออก อย่าลืมนำ id ที่สร้างมาใหม่ ไปอัพเดท ให้กับ id ในหน้านี้ด้วย
                           } else {                                                         // --> ถ้าเป็นการแก้ไข todo
                             TodoModel toSave = todo.copyWith(
                               title: _title,
                               detail: _detail,
                             );
-                            todosBloc.dispatch(UpdateTodos(toSave));
+                            todosBloc.add(UpdateTodos(toSave));
                             setState(() {
                               isEditing = !isEditing;                                     // --> สลับสถานะจาก แก้ไข เป็น ไม่แก้ไข
                             });

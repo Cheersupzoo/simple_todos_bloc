@@ -4,7 +4,10 @@ import 'package:simple_todos_bloc/models/models.dart';
 
 @immutable
 abstract class TodosEvent extends Equatable {
-  TodosEvent([List props = const <dynamic>[]]) : super(props);
+  TodosEvent([List props = const <dynamic>[]]) : super();
+
+  @override
+  List<Object> get props => [];
 }
 
 class LoadTodos extends TodosEvent {
@@ -12,6 +15,7 @@ class LoadTodos extends TodosEvent {
   String toString() {
     return 'LoadTodos';
   }
+
 }
 
 class AddTodos extends TodosEvent {

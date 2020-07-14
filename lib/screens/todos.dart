@@ -44,7 +44,7 @@ class TodosScreen extends StatelessWidget {
                           child: Row(
                             children: <Widget>[
                               GestureDetector(                                      // --> ที่ด้านซ้ายของ card จะมีปุ่มที่ติ๊กบอกความ complete
-                                onTap: () => todosBloc.dispatch(UpdateTodos(        // --> เมื่อกด เราจะทำการเรียก event UpdateTodos 
+                                onTap: () => todosBloc.add(UpdateTodos(        // --> เมื่อกด เราจะทำการเรียก event UpdateTodos 
                                     todo.copyWith(complete: !todo.complete))),      // --> ใช้ copyWith เพื่อไม่ทำให้ข้อมูลเก่าถูกกลายพันธุ์
                                 child: todo.complete == false
                                     ? Icon(Icons.check_box_outline_blank)

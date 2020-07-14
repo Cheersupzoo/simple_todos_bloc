@@ -23,6 +23,9 @@ class TodoList extends Equatable {
       _$TodoListFromJson(json);
 
   Map<String, dynamic> toJson() => _$TodoListToJson(this);
+
+  @override
+  List<Object> get props => [todos];
 }
 
 @immutable
@@ -35,7 +38,7 @@ class TodoModel extends Equatable {
 
   TodoModel({this.complete = false, String id, this.title, this.detail = ''})
       : this.id = id ?? Uuid().generateV4(),
-        super([complete, id, title, detail]);
+        super();
 
   TodoModel copyWith({bool complete, String id, String title, String detail}) {
     return TodoModel(
@@ -54,4 +57,7 @@ class TodoModel extends Equatable {
       _$TodoModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$TodoModelToJson(this);
+
+  @override
+  List<Object> get props => [complete,id,title,detail];
 }

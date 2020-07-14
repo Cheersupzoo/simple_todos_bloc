@@ -5,6 +5,8 @@ import 'package:simple_todos_bloc/models/models.dart';
 import './todos.dart';
 
 class TodosBloc extends Bloc<TodosEvent, TodosState> {
+  TodosBloc() : super(TodosLoading());
+
   @override
   TodosState get initialState {
     return TodosLoading();
@@ -35,9 +37,9 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
   }
 
   Stream<TodosState> _mapAddTodosToState(AddTodos event) async* {
-    if (currentState is TodosLoaded) {
+    if (state is TodosLoaded) {
       final List<TodoModel> updatedTodos =
-          List.from((currentState as TodosLoaded).todos);
+          List.from((state as TodosLoaded).todos);
       updatedTodos.add(event.todo);
       _saveTodos(updatedTodos);
       yield TodosLoaded(updatedTodos);
@@ -45,10 +47,10 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
   }
 
   Stream<TodosState> _mapUpdateTodosToState(UpdateTodos event) async* {
-    if (currentState is TodosLoaded) {
+    if (state is TodosLoaded) {
 
       final List<TodoModel> updatedTodos =
-          (currentState as TodosLoaded).todos.map((todo) {
+          (state as TodosLoaded).todos.map((todo) {
         return todo.id == event.updateTodo.id ? event.updateTodo : todo;
       }).toList();
       yield TodosLoaded(updatedTodos);
@@ -57,8 +59,8 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
   }
 
   Stream<TodosState> _mapDeleteTodosToState(DeleteTodos event) async* {
-    if (currentState is TodosLoaded) {
-      final List<TodoModel> updatedTodos = (currentState as TodosLoaded)
+    if (state is TodosLoaded) {
+      final List<TodoModel> updatedTodos = (state as TodosLoaded)
           .todos
           .where((todo) => todo.id != event.deleteTodo.id)
           .toList();
