@@ -11,7 +11,7 @@ dependencies:
     sdk: flutter
   meta: ">=1.1.0 <2.0.0"        # เพิ่ม meta
   equatable: ^1.2.2             # เพิ่ม equatable
-  flutter_bloc: ^5.0.1         # เพิ่ม flutter_bloc
+  flutter_bloc: ^6.0.2        # เพิ่ม flutter_bloc
   path_provider: ^1.6.11         # เพิ่ม path_provider สำหรับทำ local storage เป็น text file
   json_annotation: ^3.0.1       # เพิ่ม json_annotation ไว้แปลง ข้อมูลในรูปแบบ class ให้กลายเป็น json จะได้นำไปจัดเก็บเป็น text file ได้
 
@@ -22,7 +22,8 @@ dev_dependencies:
     sdk: flutter
   build_runner: ^1.10.0          # เพิ่ม build_runner สำหรับ json_annotation
   json_serializable: ^3.0.1     # เพิ่ม json_serializable สำหรับ json_annotation
-
+  bloc_test: ^7.0.2
+  mockito: ^4.1.1
 
 flutter:
   uses-material-design: true

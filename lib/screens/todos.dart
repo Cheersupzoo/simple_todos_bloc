@@ -19,7 +19,7 @@ class TodosScreen extends StatelessWidget {
           'Todo App',
         )),
         body: BlocBuilder(
-            bloc: todosBloc,
+            cubit: todosBloc,
             builder: (BuildContext context, TodosState state) {
               if (state is TodosLoading) {                                // --> ถ้า state เป็น TodosLoading ก็ให้โชว์ LoadingIndicator
                 return LoadingIndicator(key: Key('__TodosLoading'));      

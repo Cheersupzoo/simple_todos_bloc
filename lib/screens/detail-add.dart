@@ -34,7 +34,7 @@ class _DetailAddScreenState extends State<DetailAddScreen> {
     String detail;
 
     return BlocBuilder(
-        bloc: todosBloc,
+        cubit: todosBloc,
         builder: (BuildContext context, TodosState state) {
           final todo = (state as TodosLoaded)
               .todos
